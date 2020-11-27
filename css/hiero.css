@@ -26,8 +26,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 1.25em 0 .5em;
 	color: #222;
 	font-weight: normal;
-	font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
+	font-family: Hack, monospace, "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
+	/*font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;*/
 	line-height: 1.2em;
+	font-weight: bold;
 	}
 h1 {
 	font-size: 16px;
@@ -262,8 +264,8 @@ object {
 .site-title {
 	margin: 0;
 	font-size: 4.25em;
-	font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
+	font-family: Hack, monospace, "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
+	/*font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;*/
 	line-height: 1;
 	}
 .site-title a {
@@ -272,9 +274,9 @@ object {
 	}
 .site-description {
 	color: #999;
-	font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 1px;
+	font-family: Hack, monospace, "Microsoft YaHei Light", Arial, Helvetica, sans-serif;
+	/*font-family: "Yanone Kaffeesatz", "Microsoft YaHei Light", Arial, Helvetica, sans-serif;*/
+	/*letter-spacing: 1px;*/
 	}
 
 /* MENU
@@ -837,7 +839,7 @@ body.search .page .entry-footer {
 	margin: 0;
 	font-size: 1.6em;
 	text-transform: uppercase;
-	letter-spacing: 2px;
+	letter-spacing: 0px;
 	margin: 0 0 -1px;
 	display: inline-block;
 	line-height: 40px;

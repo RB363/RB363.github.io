@@ -23,15 +23,15 @@
   
   
   
-  <meta name="description" content="前言會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。 所需工具 Node.js Git  安裝Hexo 並建立網頁1234567cd $Destination_Dirnpm install hexo-cli -ghexo init blogcd blognpm installhexo ghexo s  驚不驚喜 開不開心 部屬至Github 先進g">
+  <meta name="description" content="前言會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。  所需工具 Node.js  Git   安裝 Hexo 並建立網頁cd $Destination_Dirnpm install hexo-cli -ghexo init blogcd blognpm installhexo ghexo s  驚不驚喜 開不開心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github">
 <meta property="og:url" content="http://blog.rb363.tw/2018/08/27/Hexo-Github/index.html">
 <meta property="og:site_name" content="RB&#39;s Page">
-<meta property="og:description" content="前言會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。 所需工具 Node.js Git  安裝Hexo 並建立網頁1234567cd $Destination_Dirnpm install hexo-cli -ghexo init blogcd blognpm installhexo ghexo s  驚不驚喜 開不開心 部屬至Github 先進g">
+<meta property="og:description" content="前言會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。  所需工具 Node.js  Git   安裝 Hexo 並建立網頁cd $Destination_Dirnpm install hexo-cli -ghexo init blogcd blognpm installhexo ghexo s  驚不驚喜 開不開心">
 <meta property="og:locale">
 <meta property="article:published_time" content="2018-08-26T23:54:36.000Z">
-<meta property="article:modified_time" content="2019-12-01T22:45:54.072Z">
+<meta property="article:modified_time" content="2020-11-27T12:17:28.120Z">
 <meta property="article:author" content="RB363">
 <meta name="twitter:card" content="summary">
   
@@ -42,6 +42,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
   <style type="text/css">
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
     @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
@@ -160,28 +161,30 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>會寫這篇的原因主要是因為剛弄好這個Blog，但暫時不知道要寫什麼。因此就先記錄一下架站的過程好了。 </p>
 <h2 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h2><ul>
-<li>Node.js</li>
-<li>Git</li>
+<li>Node.js </li>
+<li>Git </li>
 </ul>
-<h2 id="安裝Hexo-並建立網頁"><a href="#安裝Hexo-並建立網頁" class="headerlink" title="安裝Hexo 並建立網頁"></a>安裝Hexo 並建立網頁</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$Destination_Dir</span></span><br><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h2 id="安裝-Hexo-並建立網頁"><a href="#安裝-Hexo-並建立網頁" class="headerlink" title="安裝 Hexo 並建立網頁"></a>安裝 Hexo 並建立網頁</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$Destination_Dir</span></span><br><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">npm install</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p>驚不驚喜 開不開心</p>
+<p>驚不驚喜 開不開心 </p>
+<a id="more"></a>
+
 <h2 id="部屬至Github"><a href="#部屬至Github" class="headerlink" title="部屬至Github"></a>部屬至Github</h2><ol>
 <li><p>先進github建立名為[username].github.io的repository<br>(所有的[username]請自行代換成使用的github ID)</p>
 </li>
 <li><p>對剛建立的repository進行commit</p>
 </li>
 <li><p>修改<code>blog/</code>下的<code>_config.xml</code></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">	<span class="attr">repo:</span> <span class="string">git@github.com:[username]/[username].github.io.git</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">	<span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">	<span class="attr">repo:</span> <span class="string">git@github.com:[username]/[username].github.io.git</span></span><br><span class="line">	<span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下<code>hexo d</code>指令進行發布</p>
 </li>
 </ol>
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="出現-hexo-ERROR-Deployer-not-found"><a href="#出現-hexo-ERROR-Deployer-not-found" class="headerlink" title="出現 hexo ERROR Deployer not found:"></a>出現 hexo ERROR Deployer not found:</h3><p>使用<code>npm install hexo-deployer-git -save</code></p>
 <h3 id="出現-fatal-HttpRequestException-encountered"><a href="#出現-fatal-HttpRequestException-encountered" class="headerlink" title="出現 fatal: HttpRequestException encountered."></a>出現 fatal: HttpRequestException encountered.</h3><p>M$毛特別多純屬正常發揮，試試<a target="_blank" rel="noopener" href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/tag/v1.14.0">GCMW</a></p>
-<h2 id="發布文章"><a href="#發布文章" class="headerlink" title="發布文章"></a>發布文章</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new [postname]</span><br><span class="line">vim <span class="built_in">source</span>/_post/[postname].md</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<h2 id="發布文章"><a href="#發布文章" class="headerlink" title="發布文章"></a>發布文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [postname]</span><br><span class="line">vim <span class="built_in">source</span>/_post/[postname].md</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
 
 <p>鳩是這麼簡單</p>
 <h2 id="看似不錯的擴充服務"><a href="#看似不錯的擴充服務" class="headerlink" title="看似不錯的擴充服務"></a>看似不錯的擴充服務</h2><p>先記錄一下，有空的時候再來試試</p>
@@ -209,6 +212,20 @@ var themeMenus = {};
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2020/11/27/Balsn-CTF-2020-TPC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Balsn CTF 2020 - TPC
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -218,7 +235,7 @@ var themeMenus = {};
     <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">所需工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9DHexo-%E4%B8%A6%E5%BB%BA%E7%AB%8B%E7%B6%B2%E9%A0%81"><span class="nav-number">3.</span> <span class="nav-text">安裝Hexo 並建立網頁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%B1%AC%E8%87%B3Github"><span class="nav-number">4.</span> <span class="nav-text">部屬至Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trouble-Shooting"><span class="nav-number">5.</span> <span class="nav-text">Trouble Shooting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8F%BE-hexo-ERROR-Deployer-not-found"><span class="nav-number">5.1.</span> <span class="nav-text">出現 hexo ERROR Deployer not found:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8F%BE-fatal-HttpRequestException-encountered"><span class="nav-number">5.2.</span> <span class="nav-text">出現 fatal: HttpRequestException encountered.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BC%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">6.</span> <span class="nav-text">發布文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E4%BC%BC%E4%B8%8D%E9%8C%AF%E7%9A%84%E6%93%B4%E5%85%85%E6%9C%8D%E5%8B%99"><span class="nav-number">7.</span> <span class="nav-text">看似不錯的擴充服務</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">所需工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Hexo-%E4%B8%A6%E5%BB%BA%E7%AB%8B%E7%B6%B2%E9%A0%81"><span class="nav-number">3.</span> <span class="nav-text">安裝 Hexo 並建立網頁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%B1%AC%E8%87%B3Github"><span class="nav-number">4.</span> <span class="nav-text">部屬至Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trouble-Shooting"><span class="nav-number">5.</span> <span class="nav-text">Trouble Shooting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8F%BE-hexo-ERROR-Deployer-not-found"><span class="nav-number">5.1.</span> <span class="nav-text">出現 hexo ERROR Deployer not found:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8F%BE-fatal-HttpRequestException-encountered"><span class="nav-number">5.2.</span> <span class="nav-text">出現 fatal: HttpRequestException encountered.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BC%E5%B8%83%E6%96%87%E7%AB%A0"><span class="nav-number">6.</span> <span class="nav-text">發布文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E4%BC%BC%E4%B8%8D%E9%8C%AF%E7%9A%84%E6%93%B4%E5%85%85%E6%9C%8D%E5%8B%99"><span class="nav-number">7.</span> <span class="nav-text">看似不錯的擴充服務</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
