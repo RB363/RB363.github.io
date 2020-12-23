@@ -33,7 +33,7 @@
 <meta property="og:description" content="ChallengeL5D is another web challenge in our Balsn CTF 2020.  In this challenge, it combined multiple deserialization tricks.   Type: Web  Solved: 17  Author: kaibro   Description「Taking L5D was a pro">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-12-04T08:53:37.000Z">
-<meta property="article:modified_time" content="2020-12-09T13:44:48.739Z">
+<meta property="article:modified_time" content="2020-12-23T20:35:39.862Z">
 <meta property="article:author" content="RB363">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Web">
@@ -179,13 +179,13 @@ var themeMenus = {};
 <a id="more"></a>
 
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>In the website, the author puts the source code on <code>/?action=src</code>. 
-You can check the source code in <a target="_blank" rel="noopener" href="https://github.com/w181496/My-CTF-Challenges/blob/master/Balsn-CTF-2020/src/index.php">here</a>. 
+You can check the source code <a target="_blank" rel="noopener" href="https://github.com/w181496/My-CTF-Challenges/blob/master/Balsn-CTF-2020/src/index.php">here</a>. 
 From the source code, we can see several classes with <code>__wakeup</code> and <code>__destruct</code> functions. </p>
-<p>In additional, there is a <code>unserialize</code> function with a user-controllable input.</p>
+<p>In addition, there is a <code>unserialize</code> function with a user-controllable input.</p>
 <p>Therefore, just as the description of this challenge, it is an &quot;Unserialize-Oriented Programming System&quot;. </p>
 <p>Some people call this exploitation as POP chain. (Property Oriented Programming chain) 
 As for how to utilize those classes (gadgets), we need to read it more carefully. </p>
-<h3 id="Deserialization-Gadget"><a href="#Deserialization-Gadget" class="headerlink" title="Deserialization Gadget"></a>Deserialization Gadget</h3><p>After scaning the gadagets, we can realize the function of each gadget. </p>
+<h3 id="Deserialization-Gadget"><a href="#Deserialization-Gadget" class="headerlink" title="Deserialization Gadget"></a>Deserialization Gadget</h3><p>After scanning the gadgets, we can realize the function of each gadget. </p>
 <ul>
 <li><code>L5D_Command</code><ul>
 <li>This gadget can trigger <code>system</code> function when <code>$is_unser_finished</code> is true. </li>
@@ -199,7 +199,7 @@ As for how to utilize those classes (gadgets), we need to read it more carefully
 </li>
 <li><code>L5D_Login</code><ul>
 <li>This one can set <code>$_SESSION[&#39;name&#39;]</code>  to <code>&quot;wubalubadubdub&quot;</code> if we can know the hash of <code>/flag</code>. </li>
-<li>It looks like helpful, however, it is unlikely to obtain the hash of <code>/flag</code>. </li>
+<li>It looks helpful, however, it is unlikely to obtain the hash of <code>/flag</code>. </li>
 </ul>
 </li>
 <li><code>L5D_SayMyName</code><ul>
@@ -213,11 +213,11 @@ As for how to utilize those classes (gadgets), we need to read it more carefully
 </ul>
 </li>
 </ul>
-<h3 id="Global-variables-overwrite"><a href="#Global-variables-overwrite" class="headerlink" title="Global variables overwrite"></a>Global variables overwrite</h3><p>In the <code>L5D_Upload</code>, it noticeworthy that part of the code seems vulerable. </p>
+<h3 id="Global-variables-overwrite"><a href="#Global-variables-overwrite" class="headerlink" title="Global variables overwrite"></a>Global variables overwrite</h3><p>In the <code>L5D_Upload</code>, it noticeworthy that part of the code seems vulnerable. </p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">foreach</span> ($_FILES <span class="keyword">as</span> $key =&gt; $value)</span><br><span class="line">	$GLOBALS[$key] = $value;</span><br></pre></td></tr></table></figure>
 
 <p>With that, we can overwrite all of the global variables. 
-However, after testing, we can only assign a value in specific structure. </p>
+However, after testing, we can only assign a value in a specific structure. </p>
 <p>According to the PHP document, a <code>$_FILES</code> object is an array of file objects. 
 And each file object consists of name, type, tmp_name, error, and size attributes. </p>
 <p>For example, when I upload <code>l5d_file</code>, the <code>$_FILES</code> object would be like following: </p>
@@ -233,11 +233,11 @@ And each file object consists of name, type, tmp_name, error, and size attribute
 It means that we can try to set the command to execute.</p>
 <h3 id="WAF-Bypass"><a href="#WAF-Bypass" class="headerlink" title="WAF Bypass"></a>WAF Bypass</h3><p>To set protected attribute, it necessary to use <code>*</code>. </p>
 <p>After lots of searching, I find a trick can bypass this character in <a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc#ascii-strings">PHPGGC</a>. </p>
-<p>According to this document, we can replace <code>s</code> by <code>S</code> to assigned a string with hexadecimal ascii code. 
+<p>According to this document, we can replace <code>s</code> with <code>S</code> to assigned a string with hexadecimal ASCII code. 
 That is to say, to represent <code>s:1:*</code>, we can simply use <code>S:1:\2A</code> to bypass the WAF.</p>
-<h3 id="Connect-Gadgets"><a href="#Connect-Gadgets" class="headerlink" title="Connect Gadgets"></a>Connect Gadgets</h3><p>To connect all the gadgets, we need to call and free each gadget in proper timing.</p>
+<h3 id="Connect-Gadgets"><a href="#Connect-Gadgets" class="headerlink" title="Connect Gadgets"></a>Connect Gadgets</h3><p>To connect all the gadgets, we need to call and free each gadget at the proper timing.</p>
 <p>From <a target="_blank" rel="noopener" href="https://github.com/ambionics/phpggc#fast-destruct">PHPGGC</a>, we can find another trick called &#39;fast destruct&#39;. 
-When user assign two values with same key in an array, the first one value would be destroyed automatically.</p>
+When users assign two values with the same key in an array, the first one value would be destroyed automatically.</p>
 <p>Therefore, I can connect gadgets in arbitrary order by a crafted array.
 So I could trigger functions by the following sequence and reach RCE.</p>
 <ol>
@@ -255,12 +255,12 @@ So I could trigger functions by the following sequence and reach RCE.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BALSN&#123;Link_5_Destruct__is_toooo_easy_for_you:D&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Founding-and-Trials"><a href="#Founding-and-Trials" class="headerlink" title="Founding and Trials"></a>Founding and Trials</h2><h3 id="Failed-Attempt-1-Error-hash"><a href="#Failed-Attempt-1-Error-hash" class="headerlink" title="Failed Attempt 1 - Error hash"></a>Failed Attempt 1 - Error hash</h3><p>At first, I tried to test the hash checking in <code>L5D_Login</code>. </p>
-<p>For some cases, if the reading occurs failure, it would returns <code>false</code>. 
+<p>For some cases, if the reading occurs failure, it would return <code>false</code>. 
 And the result of hash function could be expected.</p>
 <p>Yet, it is not the case here.</p>
-<h3 id="Failed-Attempt-2-Global-variables-overwrite"><a href="#Failed-Attempt-2-Global-variables-overwrite" class="headerlink" title="Failed Attempt 2 - Global variables overwrite"></a>Failed Attempt 2 - Global variables overwrite</h3><p>According to PHP documentation, we can control the <code>$_FILES</code> object by assigning a file name with<code>[]</code>. </p>
+<h3 id="Failed-Attempt-2-Global-variables-overwrite"><a href="#Failed-Attempt-2-Global-variables-overwrite" class="headerlink" title="Failed Attempt 2 - Global variables overwrite"></a>Failed Attempt 2 - Global variables overwrite</h3><p>According to PHP documentation, we can control the <code>$_FILES</code> object by assigning a file name with<code>[]</code>. </p>
 <p>By this technique, we can control the depth and structure of the object. </p>
-<p>However, after testing, it is unlikely to control the variables like <code>$status</code> ,<code>$cmd</code>,  <code>$is_unser_finished</code> to our expected value.</p>
+<p>However, after testing, it is unlikely to control the variables like <code>$status</code>, <code>$cmd</code>,  <code>$is_unser_finished</code> to our expected value.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://owasp.org/www-pdf-archive/Utilizing-Code-Reuse-Or-Return-Oriented-Programming-In-PHP-Application-Exploits.pdf">Utilizing Code Reuse Or Return Oriented Programming In PHP Application Exploits</a></li>
 <li><a target="_blank" rel="noopener" href="https://rayoflightz.github.io/writeup/web/2019/01/03/35c3-php-writeup.html">35c3c php challenge</a></li>
