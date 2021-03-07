@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    
+<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>wctf 2020 - thymeleaf | RB&#39;s Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="CTFWebJWTSSTIJava" />
+  
+  
+  
+  
+  <meta name="description" content="ChallengeIn Nov. 2020, Balsn was invited to participate in WCTF - a CTF event that only invited 10 world’s best CTF teams. The most special part of this event is that each team needs to design 2 chall">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WCTF 2020 - thymeleaf">
+<meta property="og:url" content="http://blog.rb363.tw/2021/03/08/WCTF-2020-thymeleaf/index.html">
+<meta property="og:site_name" content="RB&#39;s Page">
+<meta property="og:description" content="ChallengeIn Nov. 2020, Balsn was invited to participate in WCTF - a CTF event that only invited 10 world’s best CTF teams. The most special part of this event is that each team needs to design 2 chall">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-03-07T22:21:26.000Z">
+<meta property="article:modified_time" content="2021-03-07T22:52:02.199Z">
+<meta property="article:author" content="RB363">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="JWT">
+<meta property="article:tag" content="SSTI">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+
+  <!-- Custom CSS -->
+  
+<link rel="stylesheet" href="/css/my.css">
+
+  <!-- Google Adsense -->
+  
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="RB&#39;s Page" rel="home"> RB&#39;s Page </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-WCTF-2020-thymeleaf" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      WCTF 2020 - thymeleaf
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2021/03/08/WCTF-2020-thymeleaf/" class="article-date">
+	  <time datetime="2021-03-07T22:21:26.000Z" itemprop="datePublished">March 8, 2021</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h2><p>In Nov. 2020, Balsn was invited to participate in WCTF - a CTF event that only invited 10 world’s best CTF teams.</p>
+<p>The most special part of this event is that each team needs to design 2 challenges for the other teams. </p>
+<p><code>thymeleaf</code> is a windows challenge designed by r3kapig. </p>
+<ul>
+<li>Type: Web </li>
+<li>Solved: 5/9 </li>
+<li>Author: r3kapig </li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h3><p>In the beginning, we found several pages like <code>/login</code>, <code>/swagger-ui.html</code>, <code>/v2/api-docs</code> by dirsearch.</p>
+<p>However, the APIs found in <code>/swagger-ui.html</code> could not be used in terms of the lack of permission. 
+After checking, I noticed that the authentication is based on JWT in cookie. </p>
+<h3 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h3><p>JSON Web Token is a signed message to maintain the integrity of the message.
+That is to say, we trust the message is correct based on the signature of JWT. </p>
+<p>Because the content of JWT is just encoded plaintext, we can see the following message after decoding :</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;typ&quot;</span>:<span class="string">&quot;JWT&quot;</span>,<span class="attr">&quot;alg&quot;</span>:<span class="string">&quot;HS256&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;role&quot;</span>: <span class="string">&quot;guest&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;iss&quot;</span>: <span class="string">&quot;XX-Manager&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;iat&quot;</span>: <span class="number">1605749100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Generally, I would not like to try to brute force in an international CTF competition. However, we have no more clue, which forced me to try all the tricks about JWT.</p>
+<blockquote>
+<p>In <a href="#Founding-and-Trials">Founding and Trials</a>, I&#39;d like to share some common JWT tricks.</p>
+</blockquote>
+<p>After brute force, we retrieved the secret of the JWT (<code>admin</code>).
+Therefore, we can sign all the content we give and access this website with proper permission.</p>
+<p>However, for most of the APIs, we can do nothing except to the <code>DELETE /auth/user/someone</code> with special behavior.
+To be more specific, the server would render the path in the error page when we send the following request:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl --cookie <span class="string">&#x27;SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiYWRtaW4iLCJpc3MiOiJYWC1NYW5hZ2VyIiwiaWF0IjoxNjA1NzQ5MTAwfQ.Yihr_zCEo90TPRsCa_yzkt8w_YIE1j4D4hkGdSl-xcA&#x27;</span> <span class="string">&#x27;http://180.163.241.5:10001/auth/user/admin3&#x27;</span> -X DELETE</span><br></pre></td></tr></table></figure>
+
+<p>From this behavior, we learned that we need to reach RCE by SSTI.</p>
+<h3 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h3><p>After furthermore survey and examination, we found that the server is based on the thymeleaf (same as the name of this challenge). </p>
+<p>With the following request, we can reach a simple SSTI.</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="string">/auth/user/__$%7bT(java.lang.Runtime).getRuntime().availableProcessors()%7d__::..x</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 180.163.241.5:10001</span><br><span class="line"><span class="attribute">User-Agent</span>: curl/7.69.1</span><br><span class="line"><span class="attribute">Accept</span>: */*</span><br><span class="line"><span class="attribute">Cookie</span>: SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiYWRtaW4iLCJpc3MiOiJYWC1NYW5hZ2VyIiwiaWF0IjoxNjA1NzQ5MTAwfQ.Yihr_zCEo90TPRsCa_yzkt8w_YIE1j4D4hkGdSl-xcA</span><br><span class="line"><span class="attribute">Connection</span>: close</span><br></pre></td></tr></table></figure>
+
+<p>The response would be like <code>Error resolving template [auth/user/8]</code> .</p>
+<p>The next step is to craft a payload without <code>&quot;</code> and <code>&#39;</code>.
+With payload <code>(0).toString().charAt(0).toChars(105)%5b0%5d.toString() =&gt; &#39;I&#39;</code>, we can create strings with no <code>&quot;</code> or <code>&#39;</code> .
+Until now, we can reach RCE on the server.</p>
+<h3 id="RCE-on-Windows"><a href="#RCE-on-Windows" class="headerlink" title="RCE on Windows"></a>RCE on Windows</h3><p>After we can RCE on the server, we didn&#39;t obtain the flag immediately.
+The problem was that the environment was on Windows rather than Linux, and it took a lot of time to check and craft our payload.</p>
+<blockquote>
+<p>We took almost 2 hours in this step and missed the first blood QQQ.</p>
+</blockquote>
+<h2 id="Founding-and-Trials"><a href="#Founding-and-Trials" class="headerlink" title="Founding and Trials"></a>Founding and Trials</h2><h3 id="JWT-attacks"><a href="#JWT-attacks" class="headerlink" title="JWT attacks"></a>JWT attacks</h3><p>JWT is JSON Web Token. 
+It uses a signature to make sure about the integrity of data.
+Commonly, people use JWT to reach Authentication.</p>
+<p>JWT can resolve the sharing problem between multiple backend servers and decrease the cost of storing data on the server-side.</p>
+<p>A JWT contains 3 parts:</p>
+<ol>
+<li><code>header</code>: records <code>type</code> and <code>algo</code></li>
+<li><code>payload</code>: records the data itself</li>
+<li><code>signed</code>: the signature of both of the above data</li>
+</ol>
+<p>Here are some common JWT attacks:</p>
+<ol>
+<li><p>Brute Force </p>
+<p>It just keep trying the possible keys. 
+Though it is not a fancy attack, JWT is a friendly authentication for brute force.</p>
+</li>
+<li><p>alter the <code>algo</code></p>
+<p>Because a server just resigns and compare with the received signature, we can reach forgery the JWT via alternating the <code>algo</code> and making sure that we can sign a valid <code>signed</code>. 
+It is noticeable that the <code>algo</code> we assigned should be supported by the server.</p>
+<ol>
+<li>none (CVE-2015-9235): with <code>&quot;algo&quot;: &quot;none&quot;</code>, we don&#39;t need any <code>signed</code>.</li>
+<li>RS256 $\to$ HS256 (CVE-2016-10555): alternating the asymmetric algorithm to symmetric one, we can sign the <code>signed</code> by the public key we have already known.</li>
+</ol>
+</li>
+<li><p>JWKS Injection (CVE-2018-0114):</p>
+<p>Some libraries can accept the public key from a client.
+As a result, we can insert a public key into <code>payload</code> and sign it with the corresponding private key.</p>
+</li>
+<li><p>Null Signature Attack (CVE-2020-28042)</p>
+<p>Exploiting the Logic Flaws, when the <code>signed </code> is null, it could bypass the validation.</p>
+</li>
+<li><p>&quot;kid&quot; Injection</p>
+<p>If the server does not properly deal with the <code>kid</code>, it might conduct read files or even SQLi, cmdi attacks.</p>
+</li>
+<li><p>JWKS Spoofing</p>
+<p>Editing the <code>jku</code> in the <code>header</code> to a URL that directs to our crafted JWKS file, the server might use the assigned key in JWKS file to validate.</p>
+</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ticarpi/jwt_tool/wiki/JWT-Primer">JWT-Primer</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.acunetix.com/blog/web-security-zone/exploiting-ssti-in-thymeleaf/">thymeleaf SSTI</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/CTF-writeup/">CTF-writeup</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JWT/" rel="tag">JWT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSTI/" rel="tag">SSTI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/04/Balsn-CTF-2020-L5D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Balsn CTF 2020 - L5D</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenge"><span class="nav-number">1.</span> <span class="nav-text">Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Recon"><span class="nav-number">2.1.</span> <span class="nav-text">Recon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT"><span class="nav-number">2.2.</span> <span class="nav-text">JWT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSTI"><span class="nav-number">2.3.</span> <span class="nav-text">SSTI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RCE-on-Windows"><span class="nav-number">2.4.</span> <span class="nav-text">RCE on Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Founding-and-Trials"><span class="nav-number">3.</span> <span class="nav-text">Founding and Trials</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JWT-attacks"><span class="nav-number">3.1.</span> <span class="nav-text">JWT attacks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2021 RB&#39;s Page All Rights Reserved.
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+
+<script src="/js/my.js"></script>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
